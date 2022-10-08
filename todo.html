@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/todo.css">
+</head>
+<body>
+    <div className='container'>
+        <h1> New todo list</h1>
+        <form>
+            <input type='text' id='item' required>
+            <ul id="myList"></ul>
+            <button id='button'>add</button>
+        </form>
+        <button id="clear">Clear</button>
+    </div>
+    <script>
+      var form =  document.querySelector('form')
+      var ul = document.querySelector('ul')
+      var button =  document.querySelector('#button');
+      var input = document.querySelector('#item');
+      var clear = document.querySelector('#clear');
+      //var savedToDos = []
+      //this makes list item
+      var liMaker = text => {
+        var li = document.createElement('li');
+        li.textContent = text;
+        ul.insertBefore(li, ul.childNodes[0])
+      }
+      form.addEventListener('submit', function(e) {
+        e.preventDefault()
+        liMaker(input.value)
+        saveToDo(input.value)
+        input.value = '';
+      });
+    
+      clear.addEventListener('click', remove);
+      //function remove to remove list item
+      function remove(){
+        while (ul.firstChild) {
+          ul.removeChild(ul.firstChild);
+        }
+        localStorage.removeItem('savedValues')
+      }
+      function saveToDo(item) {
+        var storedItems = localStorage.getItem('savedValues');
+        storedItems = storedItems ? JSON.parse(storedItems) : [];
+        storedItems.push(item);
+        localStorage.setItem('savedValues', JSON.stringify(storedItems))
+    
+      }
+      // populate the list on page load from localStorage
+      var storedItems = localStorage.getItem('savedValues');
+      if (storedItems) {
+        JSON.parse(storedItems).forEach(function(item) {
+          liMaker(item)
+        })
+      }
+    </script>
+    <script src="js/all.min.js"></script>
+    <script src="assets/js/todo.js"></script>
+</body>
+</html>

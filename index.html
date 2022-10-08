@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Javascript todo_app</title>
+     <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+     <div id="wrapper">
+          <div id="app-container">
+               <h1 id="to-do-header">Todo App</h1>
+               <ul id="to-do-list">
+                    <p class="no-task">No Task Added Yet.</p>
+               </ul>
+               <form id="new-task">
+                    <div class="input-group">
+                         <input type="text" placeholder="title" id="new-task-name">
+                         <textarea name="to-do-description" placeholder="Description" id="new-task-description"></textarea>
+                    </div>
+                    <button type="submit" id="add-new-task">Add</button>
+               </form>
+          </div>
+     </div>
+     <script src="assets/js/script.js"></script>
+     <script src="js/all.min.js"></script>
+</body>
+</html>
