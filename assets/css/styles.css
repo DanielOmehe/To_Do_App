@@ -3,16 +3,16 @@
      padding: 0;
      box-sizing: border-box;
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-#wrapper{
+ }
+ 
+ #wrapper{
      display: flex;
      justify-content: center;
      align-items: center;
      min-height: 100vh;
-}
-
-#app-container{
+ }
+ 
+ #app-container{
      width: 400px;
      /* height: 720px; */
      background: #fff;
@@ -21,28 +21,28 @@
      align-items: center;
      flex-direction: column;
      transition: all .5s ease-in-out;
-}
-
-#to-do-header{
+ }
+ 
+ #to-do-header{
      width: 100%;
      text-align: center;
      padding: 5px;
      color: #fff;
      background: #0da2ff;
-}
-
-#to-do-list{
+ }
+ 
+ #to-do-list{
      padding: 20px;
      width: 100%;
-}
-
-.no-task{
+ }
+ 
+ .no-task{
      font-size: 30px;
      font-weight: 500;
      color: #bbb;
-}
-
-.task{
+ }
+ 
+ .task{
      cursor: pointer;
      width: 100%;
      display: flex;
@@ -54,48 +54,52 @@
      box-shadow: 0 0 2px;
      padding: 5px 20px;
      transition: all .5s ease-in-out;
-}
-
-.task.expand{
+ }
+ 
+ .task.expand{
      height: 100px;
      box-shadow: none;
      transition: height .5s ease;
-}
-
-.task-title{
+ }
+ 
+ .task-title{
      display: flex;
      width: 100%;
      margin-bottom: 20px;
-}
-
-.task-title.done{
-     text-decoration: line-through;
-}
-
-.task-name{
+ }
+ 
+ .task-name{
      font-size: 20px;
-}
-
-.task-description{
+ }
+ 
+ .task-description{
      font-style: italic;
      font-size: 25px;
-}
-
-.task-marker{
+ }
+ 
+ .task-description.done{
+     text-decoration: line-through;
+ }
+ 
+ .task-title.done{
+     text-decoration: line-through;
+ }
+ 
+ .task-marker{
      width: 20px;
      margin-right: 10px;
-}
-
-#new-task{
+ }
+ 
+ #new-task{
      width: 100%;
      display: flex;
      flex-direction: column;
      align-items: center;
      padding: 20px;
      position: relative;
-}
-
-#new-task-name{
+ }
+ 
+ #new-task-name{
      width: 100%;
      height: 50px;
      font-size: 18px;
@@ -103,9 +107,9 @@
      outline: 0;
      border-radius: 5px;
      border: 1px solid rgba(0,0,0,.27);
-}
-
-#new-task-description{
+ }
+ 
+ #new-task-description{
      width: 100%;
      border-radius: 5px;
      border: 1px solid rgba(0,0,0,.27);
@@ -114,9 +118,17 @@
      outline: 0;
      font-size: 18px;
      margin-top: 10px;
-}
-
-#add-new-task{
+ }
+ 
+ #buttons{
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+     padding: 5px;
+ }
+ 
+ #add-new-task{
      border-radius: 3px;
      width: 100px;
      height: 35px;
@@ -129,4 +141,19 @@
      margin-top: 20px;
      cursor: pointer;
      outline: 0;
-}
+ }
+ 
+ #clear-all-tasks{
+     border-radius: 3px;
+     width: 100px;
+     height: 35px;
+     font-size: 18px;
+     box-shadow: 0 0 2px rgba(0,0,0,.67);
+     border: 1px solid #ff020f;
+     background: #ff020f;
+     color: #fff;
+     font-weight: 600;
+     margin-top: 20px;
+     cursor: pointer;
+     outline: 0;
+ }

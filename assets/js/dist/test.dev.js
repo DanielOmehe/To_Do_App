@@ -1,9 +1,10 @@
 "use strict";
 
-var newTask = document.getElementById('new-task');
+var newTask = document.getElementById('add-new-task');
 var toDoList = document.getElementById('to-do-list');
 var noTask = document.querySelector('.no-task');
-newTask.addEventListener('submit', function (e) {
+var clearAllTask = document.getElementById('clear-all-tasks');
+newTask.addEventListener('click', function (e) {
   e.preventDefault();
   var newTaskName = document.getElementById('new-task-name');
   var newTaskDescription = document.getElementById('new-task-description');
@@ -51,13 +52,19 @@ function createList(_ref) {
     } else {
       tasks.classList.toggle('expand');
     }
+  });
+  taskMarker.addEventListener('click', function (e) {
+    taskTitle.classList.toggle('done');
+    taskDescription.classList.toggle('done');
 
-    if (taskMarker.checked) {
-      toDoList.removeChild(e.currentTarget);
+    if (toDoList.children) {
+      toDoList.removeChild(tasks);
     }
+
+    localStorage.removeItem('tasks');
   });
 
-  if (noTask) {
+  if (noTask || toDoList.length === 0) {
     toDoList.removeChild(noTask);
     noTask = null;
   }
@@ -86,4 +93,14 @@ if (taskList) {
       description: task.description
     });
   });
+}
+
+clearAllTask.addEventListener('click', clearAll);
+
+function clearAll() {
+  while (toDoList.children) {
+    toDoList.removeChild(toDoList.firstChild);
+  }
+
+  localStorage.clear('tasks');
 }

@@ -1,8 +1,9 @@
-const newTask = document.getElementById('new-task');
+const newTask = document.getElementById('add-new-task');
 const toDoList = document.getElementById('to-do-list');
 let noTask = document.querySelector('.no-task');
+const clearAllTask = document.getElementById('clear-all-tasks');
 
-newTask.addEventListener('submit', e => {
+newTask.addEventListener('click', e => {
     e.preventDefault();
 
     const newTaskName = document.getElementById('new-task-name');
@@ -16,7 +17,7 @@ newTask.addEventListener('submit', e => {
         newTaskName.value = '';
         newTaskDescription.value = '';
     }
-})
+});
 
 function createList({name, description}){
     let tasks = document.createElement('li');
@@ -51,13 +52,19 @@ function createList({name, description}){
         }else{
             tasks.classList.toggle('expand');
         }
-
-        if(taskMarker.checked){
-            toDoList.removeChild(e.currentTarget)
-        }
     })
 
-    if(noTask){
+    taskMarker.addEventListener('click', e => {
+        taskTitle.classList.toggle('done');
+        taskDescription.classList.toggle('done')
+
+        if(toDoList.children){
+            toDoList.removeChild(tasks)
+        }
+        localStorage.removeItem('tasks')
+    })
+
+    if(noTask || toDoList.length === 0){
         toDoList.removeChild(noTask);
         noTask = null;
     }
@@ -75,4 +82,14 @@ if(taskList){
     JSON.parse(taskList).forEach(task => {
         createList({name: task.name, description: task.description});
     });
+}
+
+clearAllTask.addEventListener('click', clearAll);
+
+function clearAll(){
+    while(toDoList.children){
+        toDoList.innerHtml = ''
+    }
+
+    localStorage.clear('tasks');
 }

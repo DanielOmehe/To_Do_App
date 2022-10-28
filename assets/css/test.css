@@ -68,10 +68,6 @@
     margin-bottom: 20px;
 }
 
-.task-title.done{
-    text-decoration: line-through;
-}
-
 .task-name{
     font-size: 20px;
 }
@@ -79,6 +75,14 @@
 .task-description{
     font-style: italic;
     font-size: 25px;
+}
+
+.task-description.done{
+    text-decoration: line-through;
+}
+
+.task-title.done{
+    text-decoration: line-through;
 }
 
 .task-marker{
@@ -116,6 +120,14 @@
     margin-top: 10px;
 }
 
+#buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
 #add-new-task{
     border-radius: 3px;
     width: 100px;
@@ -129,4 +141,25 @@
     margin-top: 20px;
     cursor: pointer;
     outline: 0;
+}
+
+#clear-all-tasks{
+    border-radius: 3px;
+    width: 100px;
+    height: 35px;
+    font-size: 18px;
+    box-shadow: 0 0 2px rgba(0,0,0,.67);
+    border: 1px solid #ff020f;
+    background: #ff020f;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    outline: 0;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 400px){
+    #wrapper{
+        padding: 20px;
+    }
 }
